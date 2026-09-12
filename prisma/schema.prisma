@@ -1,0 +1,166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  PROJECT_MANAGER
+  DEVELOPER
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  IN_REVIEW
+  DONE
+  OVERDUE
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum NotificationType {
+  TASK_ASSIGNED
+  TASK_IN_REVIEW
+  TASK_STATUS_CHANGED
+  GENERAL
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(DEVELOPER)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Projects this user manages (as PROJECT_MANAGER)
+  managedProjects Project[]      @relation("ProjectManager")
+  assignedTasks   Task[]         @relation("AssignedDeveloper")
+  activityLogs    ActivityLog[]  @relation("ActivityActor")
+  notifications   Notification[] @relation("NotificationRecipient")
+  refreshTokens   RefreshToken[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model Client {
+  id        String   @id @default(uuid())
+  name      String
+  email     String?
+  company   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  projects Project[]
+
+  @@map("clients")
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  clientId String
+  client   Client @relation(fields: [clientId], references: [id], onDelete: Restrict)
+
+  managerId String
+  manager   User   @relation("ProjectManager", fields: [managerId], references: [id], onDelete: Restrict)
+
+  tasks        Task[]
+  activityLogs ActivityLog[]
+
+  @@index([managerId])
+  @@index([clientId])
+  @@map("projects")
+}
+
+model Task {
+  id          String       @id @default(uuid())
+  title       String
+  description String?
+  status      TaskStatus   @default(TODO)
+  priority    TaskPriority @default(MEDIUM)
+  dueDate     DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  assignedDeveloperId String?
+  assignedDeveloper   User?   @relation("AssignedDeveloper", fields: [assignedDeveloperId], references: [id], onDelete: SetNull)
+
+  activityLogs  ActivityLog[]
+  notifications Notification[]
+
+  @@index([projectId])
+  @@index([assignedDeveloperId])
+  @@index([status])
+  @@index([priority])
+  @@index([dueDate])
+  @@map("tasks")
+}
+
+model ActivityLog {
+  id             String     @id @default(uuid())
+  taskId         String
+  task           Task       @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  projectId      String
+  project        Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User       @relation("ActivityActor", fields: [userId], references: [id], onDelete: Restrict)
+  previousStatus TaskStatus?
+  newStatus      TaskStatus
+  createdAt      DateTime   @default(now())
+
+  @@index([projectId])
+  @@index([createdAt])
+  @@index([taskId])
+  @@map("activity_logs")
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  user      User             @relation("NotificationRecipient", fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  message   String
+  read      Boolean          @default(false)
+  taskId    String?
+  task      Task?            @relation(fields: [taskId], references: [id], onDelete: SetNull)
+  createdAt DateTime         @default(now())
+
+  @@index([userId])
+  @@index([userId, read])
+  @@map("notifications")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique
+  revoked   Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  replacedByTokenHash String?
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}

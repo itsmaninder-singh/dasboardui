@@ -14,7 +14,6 @@ const router = Router();
 
 router.use(authenticate);
 
-// Client management is ADMIN-only. PMs/Developers never touch clients directly.
 router.post("/", authorize("ADMIN"), validate({ body: createClientSchema }), clientController.create);
 router.get(
   "/",

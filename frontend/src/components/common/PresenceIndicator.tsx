@@ -19,14 +19,14 @@ export const PresenceIndicator: React.FC<PresenceIndicatorProps> = ({
       className={`inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-graphite-card/90 border border-graphite-border text-xs font-mono select-none ${className}`}
       title={isConnected ? `${onlineCount} users connected in real-time` : "Connecting to real-time telemetry..."}
     >
-      {/* Status Dot */}
+      {}
       <span
         className={`inline-flex rounded-full h-2 w-2 ${
           isConnected ? "bg-emerald-500" : "bg-amber-500"
         }`}
       />
 
-      {/* Odometer-style digit roll */}
+      {}
       <div className="flex items-center gap-1">
         <div className="relative h-4 overflow-hidden inline-flex items-center font-bold text-slate-100">
           <AnimatePresence mode="popLayout" initial={false}>

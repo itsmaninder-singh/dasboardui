@@ -30,7 +30,7 @@ export const activityRepository = {
       prisma.activityLog.count({ where }),
     ]);
   },
-  // Used for the "missed events on reconnect" feature — authoritative source is Postgres, not memory.
+  
   latestForUser(where: Prisma.ActivityLogWhereInput, take = 20) {
     return prisma.activityLog.findMany({
       where,

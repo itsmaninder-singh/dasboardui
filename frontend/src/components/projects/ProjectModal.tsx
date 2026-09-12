@@ -39,7 +39,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
   const user = useAuthStore((s) => s.user);
   const isAdmin = user?.role === "ADMIN";
 
-  // Fetch Clients for selection
+  
   const { data: clientsData } = useQuery({
     queryKey: ["clients", "selector"],
     queryFn: async () => {
@@ -49,7 +49,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
     enabled: isOpen,
   });
 
-  // If Admin, fetch Project Managers for selection
+  
   const { data: usersData } = useQuery({
     queryKey: ["users", "pms-selector"],
     queryFn: async () => {

@@ -4,7 +4,7 @@ export const createProjectSchema = z.object({
   name: z.string().min(2).max(150),
   description: z.string().max(2000).optional(),
   clientId: z.string().uuid(),
-  // Admin may assign a manager explicitly; PM creating their own project doesn't need to pass this.
+  
   managerId: z.string().uuid().optional(),
 });
 

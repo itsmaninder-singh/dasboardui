@@ -23,7 +23,7 @@ export const DevDashboard: React.FC = () => {
   const addToast = useUiStore((s) => s.addToast);
   const [statusFilter, setStatusFilter] = useState<string>("ALL");
 
-  // Fetch Developer's assigned tasks
+  
   const { data: tasksData, isLoading, refetch } = useQuery({
     queryKey: ["tasks", "dev-dashboard"],
     queryFn: async () => {
@@ -32,7 +32,7 @@ export const DevDashboard: React.FC = () => {
     },
   });
 
-  // Fast status update mutation
+  
   const updateStatusMutation = useMutation({
     mutationFn: async ({ taskId, status }: { taskId: string; status: TaskStatus }) => {
       const res = await api.patch<ApiResponse<Task>>(`/tasks/${taskId}/status`, { status });
@@ -58,7 +58,7 @@ export const DevDashboard: React.FC = () => {
 
   const tasks = tasksData?.data || [];
 
-  // Priority weight mapping for sorting
+  
   const priorityWeight: Record<TaskPriority, number> = {
     CRITICAL: 4,
     HIGH: 3,
@@ -66,7 +66,7 @@ export const DevDashboard: React.FC = () => {
     LOW: 1,
   };
 
-  // Sort by priority (desc) then dueDate (asc)
+  
   const sortedTasks = [...tasks].sort((a, b) => {
     const pDiff = (priorityWeight[b.priority] || 0) - (priorityWeight[a.priority] || 0);
     if (pDiff !== 0) return pDiff;
@@ -76,14 +76,14 @@ export const DevDashboard: React.FC = () => {
     return 0;
   });
 
-  // Filtered list
+  
   const displayTasks = sortedTasks.filter((t) => {
     if (statusFilter === "ALL") return t.status !== "DONE";
     if (statusFilter === "ALL_INC_DONE") return true;
     return t.status === statusFilter;
   });
 
-  // "What's Due Soon" (tasks with dueDate within next 7 days, not done)
+  
   const dueSoonTasks = sortedTasks
     .filter((t) => t.dueDate && t.status !== "DONE")
     .sort((a, b) => new Date(a.dueDate!).getTime() - new Date(b.dueDate!).getTime())
@@ -91,7 +91,7 @@ export const DevDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Banner */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -113,13 +113,13 @@ export const DevDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Due Soon Highlight Section */}
+      {}
       {dueSoonTasks.length > 0 && (
         <div className="bg-obsidian-900 border border-amber-500/30 rounded-xl p-4 shadow-[0_0_20px_rgba(245,158,11,0.08)]">
           <div className="flex items-center gap-2 mb-3">
             <Clock className="w-4 h-4 text-amber-400" />
             <h3 className="font-heading font-semibold text-xs tracking-wider uppercase text-amber-400">
-              URGENT TIMELINE // DUE SOON
+              URGENT TIMELINE 
             </h3>
           </div>
 
@@ -159,12 +159,12 @@ export const DevDashboard: React.FC = () => {
         </div>
       )}
 
-      {/* Main Grid: Developer Queue + Task Activity Stream */}
+      {}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column: Sorted Tasks List */}
+        {}
         <div className="lg:col-span-2 space-y-4">
           <div className="bg-graphite-card border border-graphite-border rounded-xl p-5 shadow-lg">
-            {/* Header with filter */}
+            {}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-graphite-border">
               <div>
                 <h3 className="font-heading font-semibold text-sm text-slate-100">
@@ -175,7 +175,7 @@ export const DevDashboard: React.FC = () => {
                 </p>
               </div>
 
-              {/* Status Filter Tabs */}
+              {}
               <div className="flex items-center gap-1 bg-obsidian-850 p-1 rounded-lg border border-graphite-border text-xs font-mono">
                 {["ALL", "TODO", "IN_PROGRESS", "IN_REVIEW"].map((st) => (
                   <button
@@ -193,7 +193,7 @@ export const DevDashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* List */}
+            {}
             <div className="mt-4 space-y-3">
               {isLoading ? (
                 <div className="space-y-3">
@@ -218,7 +218,7 @@ export const DevDashboard: React.FC = () => {
                         <StatusBadge status={task.status} size="sm" />
                         {task.project?.name && (
                           <span className="text-[10px] font-mono text-slate-500">
-                            // {task.project.name}
+                            
                           </span>
                         )}
                       </div>
@@ -237,7 +237,7 @@ export const DevDashboard: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Developer Status Controller Action */}
+                    {}
                     <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-graphite-border">
                       <select
                         value={task.status}
@@ -271,7 +271,7 @@ export const DevDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Developer Scoped Activity Feed */}
+        {}
         <div className="lg:col-span-1">
           <ActivityFeedCard limit={10} />
         </div>

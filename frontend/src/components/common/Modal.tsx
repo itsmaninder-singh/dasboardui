@@ -45,7 +45,7 @@ export const Modal: React.FC<ModalProps> = ({
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-          {/* Frosted Glass Backdrop */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -55,7 +55,7 @@ export const Modal: React.FC<ModalProps> = ({
             className="fixed inset-0 bg-black/25 backdrop-blur-md"
           />
 
-          {/* Spatial Glass Container */}
+          {}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -63,10 +63,10 @@ export const Modal: React.FC<ModalProps> = ({
             transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
             className={`relative w-full ${widthClass} glass-modal rounded-xl shadow-2xl p-6 overflow-hidden z-10`}
           >
-            {/* Ambient amber hairline top accent */}
+            {}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent" />
 
-            {/* Header */}
+            {}
             <div className="flex items-start justify-between pb-4 border-b border-graphite-border">
               <div>
                 <h3 className="text-lg font-heading font-bold text-slate-100 tracking-tight">
@@ -82,7 +82,7 @@ export const Modal: React.FC<ModalProps> = ({
               </button>
             </div>
 
-            {/* Content */}
+            {}
             <div className="mt-5">{children}</div>
           </motion.div>
         </div>

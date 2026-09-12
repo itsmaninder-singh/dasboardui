@@ -23,7 +23,7 @@ export interface ActivityLog {
     id: string;
     name: string;
   };
-  // Socket event payload format compatibility
+  
   taskTitle?: string;
   changedBy?: {
     id: string;

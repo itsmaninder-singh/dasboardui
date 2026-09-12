@@ -32,7 +32,7 @@ describe("Overdue background job", () => {
 
     const logCountAfterFirstRun = await prisma.activityLog.count({ where: { taskId: overdueTask.id } });
 
-    // Running again must not create a duplicate ActivityLog / re-flip the task.
+    
     await runOverdueSweep();
     const logCountAfterSecondRun = await prisma.activityLog.count({ where: { taskId: overdueTask.id } });
 

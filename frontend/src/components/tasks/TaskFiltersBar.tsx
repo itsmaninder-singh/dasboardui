@@ -15,7 +15,7 @@ interface TaskFiltersBarProps {
 export const TaskFiltersBar: React.FC<TaskFiltersBarProps> = ({ showProjectFilter = true }) => {
   const { filters, setFilter, resetFilters } = useTaskFilters();
 
-  // Fetch projects list for the project filter dropdown
+  
   const { data: projectsData } = useQuery({
     queryKey: ["projects", "filter-list"],
     queryFn: async () => {
@@ -50,7 +50,7 @@ export const TaskFiltersBar: React.FC<TaskFiltersBarProps> = ({ showProjectFilte
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-        {/* Status Filter */}
+        {}
         <div className="space-y-1">
           <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
             Status
@@ -69,7 +69,7 @@ export const TaskFiltersBar: React.FC<TaskFiltersBarProps> = ({ showProjectFilte
           </select>
         </div>
 
-        {/* Priority Filter */}
+        {}
         <div className="space-y-1">
           <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
             Priority
@@ -87,7 +87,7 @@ export const TaskFiltersBar: React.FC<TaskFiltersBarProps> = ({ showProjectFilte
           </select>
         </div>
 
-        {/* Project Filter */}
+        {}
         {showProjectFilter && (
           <div className="space-y-1">
             <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
@@ -108,7 +108,7 @@ export const TaskFiltersBar: React.FC<TaskFiltersBarProps> = ({ showProjectFilte
           </div>
         )}
 
-        {/* Due Date From */}
+        {}
         <div className="space-y-1">
           <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
             Due Date From
@@ -121,7 +121,7 @@ export const TaskFiltersBar: React.FC<TaskFiltersBarProps> = ({ showProjectFilte
           />
         </div>
 
-        {/* Due Date To */}
+        {}
         <div className="space-y-1">
           <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
             Due Date To

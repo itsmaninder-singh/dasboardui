@@ -37,7 +37,7 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4 bg-obsidian-950 overflow-hidden">
-      {/* Precision ambient background grid */}
+      {}
       <div className="absolute inset-0 bg-ambient-grid opacity-40 pointer-events-none" />
       <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
 
@@ -50,7 +50,7 @@ export const RegisterPage: React.FC = () => {
         <div className="glass-modal rounded-2xl p-7 border border-graphite-border shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent" />
 
-          {/* Header */}
+          {}
           <div className="mb-6">
             <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/40 flex items-center justify-center text-amber-400 mb-3 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
               <UserPlus className="w-5 h-5" />
@@ -63,7 +63,7 @@ export const RegisterPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Form */}
+          {}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <Input
               label="Full Name"
@@ -103,7 +103,7 @@ export const RegisterPage: React.FC = () => {
             </Button>
           </form>
 
-          {/* Footer note */}
+          {}
           <div className="mt-6 text-center">
             <span className="text-xs text-slate-400 font-sans">
               Already have credentials?{" "}

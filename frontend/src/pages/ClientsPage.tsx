@@ -61,7 +61,7 @@ export const ClientsPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -93,7 +93,7 @@ export const ClientsPage: React.FC = () => {
         )}
       </div>
 
-      {/* Search */}
+      {}
       <div className="relative max-w-md">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
         <input
@@ -105,7 +105,7 @@ export const ClientsPage: React.FC = () => {
         />
       </div>
 
-      {/* List */}
+      {}
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[1, 2, 3].map((i) => (
@@ -195,7 +195,7 @@ export const ClientsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Modal */}
+      {}
       {isModalOpen && (
         <ClientModal
           isOpen={isModalOpen}

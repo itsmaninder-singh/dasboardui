@@ -49,9 +49,9 @@ describe("Activity log", () => {
       .set("Authorization", `Bearer ${devToken}`)
       .send({ status: "IN_PROGRESS" });
 
-    // Simulate a "reconnect" simply by querying the REST endpoint fresh — this proves
-    // the data survives independent of any socket/in-memory state, since no socket
-    // connection was ever opened in this test.
+    
+    
+    
     const res = await request(app)
       .get(`/api/activity?projectId=${project.id}`)
       .set("Authorization", `Bearer ${pmToken}`);

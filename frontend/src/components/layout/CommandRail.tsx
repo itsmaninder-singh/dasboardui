@@ -27,7 +27,7 @@ export const CommandRail: React.FC = () => {
 
   const role = user?.role;
 
-  // Nav items configuration based on role
+  
   const navItems = [
     {
       to: "/",
@@ -46,7 +46,7 @@ export const CommandRail: React.FC = () => {
       to: "/tasks",
       label: "Tasks & Board",
       icon: <CheckSquare className="w-4 h-4" />,
-      allowed: true, // all roles have tasks (scoped by backend)
+      allowed: true, 
     },
     {
       to: "/clients",
@@ -65,7 +65,7 @@ export const CommandRail: React.FC = () => {
       to: "/users",
       label: "Team Directory",
       icon: <Users className="w-4 h-4" />,
-      allowed: role === "ADMIN", // admin only
+      allowed: role === "ADMIN", 
     },
   ].filter((item) => item.allowed);
 
@@ -75,11 +75,11 @@ export const CommandRail: React.FC = () => {
         railCollapsed ? "w-18" : "w-60"
       }`}
     >
-      {/* Top section: Logo & App Identity */}
+      {}
       <div>
         <div className="h-14 flex items-center justify-between px-4 border-b border-graphite-border">
           <div className="flex items-center gap-2.5 overflow-hidden">
-            {/* Precision Icon Mark */}
+            {}
             <div className="w-7 h-7 rounded bg-amber-500/10 border border-amber-500/40 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(245,158,11,0.2)]">
               <span className="font-heading font-black text-amber-400 text-sm tracking-tighter">K</span>
             </div>
@@ -104,7 +104,7 @@ export const CommandRail: React.FC = () => {
           </button>
         </div>
 
-        {/* Navigation Items */}
+        {}
         <nav className="p-2 space-y-1 mt-2">
           {navItems.map((item) => (
             <NavLink
@@ -131,9 +131,9 @@ export const CommandRail: React.FC = () => {
         </nav>
       </div>
 
-      {/* Bottom section: User Capsule & Socket Status */}
+      {}
       <div className="p-3 border-t border-graphite-border space-y-2">
-        {/* Real-time Link Telemetry */}
+        {}
         <div className="flex items-center gap-2 px-2 py-1 text-[11px] font-mono text-slate-500">
           <span
             className={`w-1.5 h-1.5 rounded-full ${
@@ -147,7 +147,7 @@ export const CommandRail: React.FC = () => {
           )}
         </div>
 
-        {/* User profile dock */}
+        {}
         {user && (
           <div
             className={`flex items-center justify-between p-2 rounded-lg bg-graphite-card/80 border border-graphite-border ${

@@ -26,5 +26,5 @@ export const env = {
   COOKIE_SAME_SITE: (process.env.COOKIE_SAME_SITE ?? "lax") as "lax" | "strict" | "none",
   COOKIE_DOMAIN: process.env.COOKIE_DOMAIN,
 
-  REFRESH_TOKEN_TTL_MS: 7 * 24 * 60 * 60 * 1000, // 7 days, mirrors JWT_REFRESH_EXPIRES_IN
+  REFRESH_TOKEN_TTL_MS: 7 * 24 * 60 * 60 * 1000, 
 };

@@ -6,14 +6,6 @@ interface RequestingUser {
   role: Role;
 }
 
-/**
- * Builds the Prisma `where` clause enforcing activity visibility rules:
- *  - ADMIN: all projects
- *  - PROJECT_MANAGER: only activity in projects they manage
- *  - DEVELOPER: only activity on tasks assigned to them
- * This same clause is reused by both the REST endpoint and the socket
- * "missed events on reconnect" flow, so the rule is defined in exactly one place.
- */
 function buildVisibilityWhere(requester: RequestingUser, projectId?: string): Prisma.ActivityLogWhereInput {
   if (requester.role === "ADMIN") {
     return projectId ? { projectId } : {};
@@ -24,7 +16,7 @@ function buildVisibilityWhere(requester: RequestingUser, projectId?: string): Pr
       ...(projectId ? { projectId } : {}),
     };
   }
-  // DEVELOPER
+  
   return {
     task: { assignedDeveloperId: requester.id },
     ...(projectId ? { projectId } : {}),
@@ -38,8 +30,7 @@ export const activityService = {
     return { activities, total, page, limit };
   },
 
-  /** Used on socket reconnect: latest 20 events this user is authorized to see, from Postgres. */
-  async latestForUser(requester: RequestingUser) {
+    async latestForUser(requester: RequestingUser) {
     const where = buildVisibilityWhere(requester);
     return activityRepository.latestForUser(where, 20);
   },

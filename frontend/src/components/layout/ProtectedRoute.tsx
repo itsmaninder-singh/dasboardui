@@ -44,7 +44,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
           <ShieldAlert className="w-8 h-8" />
         </div>
         <span className="text-xs font-mono uppercase tracking-widest text-rose-400 mb-1">
-          HTTP 403 // FORBIDDEN
+          HTTP 403 
         </span>
         <h2 className="text-2xl font-heading font-bold text-slate-100 mb-2">
           Restricted Perimeter

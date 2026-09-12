@@ -8,7 +8,6 @@ const router = Router();
 
 router.use(authenticate);
 
-// Visibility is scoped inside activity.service per role — no route-level role gate needed.
 router.get("/", validate({ query: activityQuerySchema }), activityController.list);
 
 export default router;

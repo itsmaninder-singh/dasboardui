@@ -29,7 +29,7 @@ export const UsersPage: React.FC = () => {
     },
   });
 
-  // Toggle active status
+  
   const toggleActiveMutation = useMutation({
     mutationFn: async ({ id, isActive }: { id: string; isActive: boolean }) => {
       const res = await api.patch<ApiResponse<User>>(`/users/${id}`, { isActive });
@@ -62,7 +62,7 @@ export const UsersPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -88,7 +88,7 @@ export const UsersPage: React.FC = () => {
         </Button>
       </div>
 
-      {/* Search */}
+      {}
       <div className="relative max-w-md">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
         <input
@@ -100,7 +100,7 @@ export const UsersPage: React.FC = () => {
         />
       </div>
 
-      {/* Table */}
+      {}
       {isLoading ? (
         <div className="h-64 bg-graphite-card rounded-xl skeleton-shimmer" />
       ) : isError ? (
@@ -219,7 +219,7 @@ export const UsersPage: React.FC = () => {
         </div>
       )}
 
-      {/* Modal */}
+      {}
       {isModalOpen && (
         <UserModal
           isOpen={isModalOpen}

@@ -27,7 +27,7 @@ export const useSocketStore = create<SocketState>((set) => ({
   decrementUnreadCount: () => set((s) => ({ unreadCount: Math.max(0, s.unreadCount - 1) })),
   addActivity: (activity) =>
     set((s) => {
-      // Deduplicate and keep newest 30 items
+      
       const filtered = s.recentActivities.filter((a) => a.id !== activity.id);
       return { recentActivities: [activity, ...filtered].slice(0, 30) };
     }),

@@ -34,7 +34,7 @@ export const TaskDetailPage: React.FC = () => {
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  // Fetch Task Details
+  
   const {
     data: task,
     isLoading: isTaskLoading,
@@ -50,7 +50,7 @@ export const TaskDetailPage: React.FC = () => {
     enabled: !!id,
   });
 
-  // Fetch Activity History for this task
+  
   const { data: activityData, isLoading: isActivityLoading } = useQuery({
     queryKey: ["activity", { taskId: id }],
     queryFn: async () => {
@@ -61,7 +61,7 @@ export const TaskDetailPage: React.FC = () => {
     enabled: !!task?.projectId,
   });
 
-  // Status Change Mutation
+  
   const updateStatusMutation = useMutation({
     mutationFn: async (newStatus: TaskStatus) => {
       const res = await api.patch<ApiResponse<Task>>(`/tasks/${id}/status`, { status: newStatus });
@@ -86,7 +86,7 @@ export const TaskDetailPage: React.FC = () => {
     },
   });
 
-  // Delete Mutation
+  
   const deleteMutation = useMutation({
     mutationFn: async () => {
       await api.delete(`/tasks/${id}`);
@@ -146,7 +146,7 @@ export const TaskDetailPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Back navigation & Actions */}
+      {}
       <div className="flex items-center justify-between">
         <Link
           to="/tasks"
@@ -183,13 +183,13 @@ export const TaskDetailPage: React.FC = () => {
         )}
       </div>
 
-      {/* Main Task Header Card */}
+      {}
       <div className="bg-graphite-card border border-graphite-border rounded-xl p-6 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-amber-500 via-cyan-500 to-transparent" />
 
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
           <div className="flex-1 min-w-0">
-            {/* Metadata badges */}
+            {}
             <div className="flex items-center gap-2 flex-wrap mb-2">
               <PriorityBadge priority={task.priority} />
               <StatusBadge status={task.status} />
@@ -220,7 +220,7 @@ export const TaskDetailPage: React.FC = () => {
             )}
           </div>
 
-          {/* Status Transition Controller Panel */}
+          {}
           <div className="lg:w-72 bg-obsidian-850 border border-graphite-border rounded-xl p-4 space-y-4 shrink-0 shadow-inner">
             <div className="pb-2 border-b border-graphite-border">
               <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block">
@@ -251,7 +251,7 @@ export const TaskDetailPage: React.FC = () => {
               ))}
             </div>
 
-            {/* Task Info List */}
+            {}
             <div className="pt-3 border-t border-graphite-border space-y-2 text-xs">
               <div className="flex items-center justify-between text-slate-400">
                 <span>Assignee:</span>
@@ -282,7 +282,7 @@ export const TaskDetailPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Task Activity & Transition History */}
+      {}
       <div className="bg-graphite-card border border-graphite-border rounded-xl p-5 shadow-lg">
         <div className="flex items-center gap-2 pb-4 border-b border-graphite-border">
           <Activity className="w-4 h-4 text-amber-400" />
@@ -327,7 +327,7 @@ export const TaskDetailPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Edit Modal */}
+      {}
       {isEditModalOpen && (
         <TaskModal
           isOpen={isEditModalOpen}

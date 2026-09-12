@@ -20,12 +20,12 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
     <div
       className={`flex flex-col items-center justify-center p-8 text-center rounded-xl border border-dashed border-graphite-border/80 bg-graphite-card/30 ${className}`}
     >
-      {/* Abstract Tech Geometric Wireframe Illustration */}
+      {}
       <div className="relative w-24 h-24 mb-4 flex items-center justify-center">
-        {/* Outer rotating hex / square wireframe */}
+        {}
         <div className="absolute inset-0 rounded-2xl border border-amber-500/20 rotate-6" />
         <div className="absolute inset-0 rounded-2xl border border-graphite-border -rotate-3" />
-        {/* Inner technical grid reticle */}
+        {}
         <div className="relative w-14 h-14 rounded-lg bg-obsidian-850 border border-amber-500/30 flex items-center justify-center shadow-inner">
           <svg
             className="w-7 h-7 text-amber-400/70"

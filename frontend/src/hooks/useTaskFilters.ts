@@ -37,7 +37,6 @@ export function useTaskFilters() {
           } else {
             next.set(key, String(value));
           }
-          // Reset page to 1 when changing filters other than page
           if (key !== "page") {
             next.delete("page");
           }

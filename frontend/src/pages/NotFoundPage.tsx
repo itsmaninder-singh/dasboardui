@@ -11,7 +11,7 @@ export const NotFoundPage: React.FC = () => {
       </div>
 
       <span className="text-xs font-mono uppercase tracking-widest text-amber-400 mb-1">
-        HTTP 404 // ROUTE OUT OF BOUNDS
+        HTTP 404 
       </span>
 
       <h1 className="text-3xl font-heading font-bold text-slate-100 mb-2">

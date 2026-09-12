@@ -37,7 +37,7 @@ export const ProjectDetailPage: React.FC = () => {
 
   const canManage = user?.role === "ADMIN" || user?.role === "PROJECT_MANAGER";
 
-  // Fetch Project details
+  
   const {
     data: project,
     isLoading: isProjectLoading,
@@ -52,7 +52,7 @@ export const ProjectDetailPage: React.FC = () => {
     enabled: !!id,
   });
 
-  // Fetch Project Tasks
+  
   const {
     data: tasksData,
     isLoading: isTasksLoading,
@@ -131,7 +131,7 @@ export const ProjectDetailPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top back navigation */}
+      {}
       <div className="flex items-center justify-between">
         <Link
           to="/projects"
@@ -168,7 +168,7 @@ export const ProjectDetailPage: React.FC = () => {
         )}
       </div>
 
-      {/* Project Overview Card */}
+      {}
       <div className="bg-graphite-card border border-graphite-border rounded-xl p-6 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-500/60 via-amber-500/60 to-transparent" />
 
@@ -191,7 +191,7 @@ export const ProjectDetailPage: React.FC = () => {
             )}
           </div>
 
-          {/* Metadata badges */}
+          {}
           <div className="flex flex-wrap gap-4 pt-4 lg:pt-0 border-t lg:border-t-0 border-graphite-border">
             <div className="p-3 rounded-lg bg-obsidian-850 border border-graphite-border min-w-[140px]">
               <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-1">
@@ -215,7 +215,7 @@ export const ProjectDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Project Task Progress Bar */}
+        {}
         <div className="mt-6 pt-5 border-t border-graphite-border/70">
           <div className="flex items-center justify-between text-xs font-mono mb-2">
             <span className="text-slate-400">PIPELINE EXECUTION:</span>
@@ -259,7 +259,7 @@ export const ProjectDetailPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Project Tasks Section */}
+      {}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
@@ -305,7 +305,7 @@ export const ProjectDetailPage: React.FC = () => {
         )}
       </div>
 
-      {/* Edit Modal */}
+      {}
       {isEditModalOpen && (
         <ProjectModal
           isOpen={isEditModalOpen}
@@ -314,7 +314,7 @@ export const ProjectDetailPage: React.FC = () => {
         />
       )}
 
-      {/* New Task for this project */}
+      {}
       {isNewTaskModalOpen && (
         <TaskModal
           isOpen={isNewTaskModalOpen}

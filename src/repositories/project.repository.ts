@@ -17,7 +17,7 @@ export const projectRepository = {
   delete(id: string) {
     return prisma.project.delete({ where: { id } });
   },
-  // Admin: all projects. PM: only their own (filter applied by service via `where`).
+  
   list(where: Prisma.ProjectWhereInput, skip: number, take: number) {
     return prisma.$transaction([
       prisma.project.findMany({

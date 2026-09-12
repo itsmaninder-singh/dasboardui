@@ -11,7 +11,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="bg-graphite-card border border-graphite-border rounded-xl p-5 shadow-lg hover:border-amber-500/40 transition-all flex flex-col justify-between group">
       <div>
-        {/* Top bar: Client pill + Date */}
+        {}
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-obsidian-850 border border-graphite-border text-[11px] font-mono text-slate-300">
             <Building2 className="w-3 h-3 text-cyan-400" />
@@ -26,7 +26,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </span>
         </div>
 
-        {/* Title */}
+        {}
         <Link to={`/projects/${project.id}`} className="block">
           <h3 className="font-heading font-bold text-base text-slate-100 group-hover:text-amber-300 transition-colors">
             {project.name}
@@ -40,7 +40,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         )}
       </div>
 
-      {/* Footer: Manager + Link */}
+      {}
       <div className="pt-4 mt-4 border-t border-graphite-border/70 flex items-center justify-between">
         <div className="flex items-center gap-1.5 text-xs text-slate-400">
           <div className="w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-mono text-[10px] text-slate-200">

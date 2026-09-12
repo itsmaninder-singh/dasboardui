@@ -13,15 +13,11 @@ interface AuthState {
   setLoading: (isLoading: boolean) => void;
 }
 
-/**
- * Access token is strictly kept in memory here — never in localStorage or sessionStorage.
- * Refresh token is handled entirely via HttpOnly cookies by the browser.
- */
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   accessToken: null,
   isAuthenticated: false,
-  isLoading: true, // starts true for initial silent refresh boot
+  isLoading: true, 
   setAuth: (user, accessToken) =>
     set({
       user,

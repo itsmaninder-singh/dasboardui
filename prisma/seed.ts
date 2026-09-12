@@ -10,7 +10,7 @@ async function hash(pw: string) {
 async function main() {
   console.log("Seeding database...");
 
-  // Clear existing data (order matters due to FKs).
+  
   await prisma.notification.deleteMany();
   await prisma.activityLog.deleteMany();
   await prisma.task.deleteMany();
@@ -101,7 +101,7 @@ async function main() {
       },
     });
 
-    // Seed one activity log reflecting creation -> current status.
+    
     await prisma.activityLog.create({
       data: {
         taskId: task.id,

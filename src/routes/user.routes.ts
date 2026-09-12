@@ -11,7 +11,6 @@ router.use(authenticate);
 
 router.get("/me", userController.me);
 
-// ADMIN only beyond this point.
 router.post("/", authorize("ADMIN"), validate({ body: createUserSchema }), userController.create);
 router.get("/", authorize("ADMIN"), validate({ query: paginationQuerySchema }), userController.list);
 router.get("/:id", authorize("ADMIN"), validate({ params: idParamSchema }), userController.getById);

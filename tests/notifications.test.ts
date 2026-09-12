@@ -15,7 +15,7 @@ describe("Notifications", () => {
     const client = await createClient();
     const project = await createProject(pm.id, client.id);
 
-    // Creating a task assigned to `dev` should generate a TASK_ASSIGNED notification.
+    
     const task = await createTask(project.id, dev.id);
     await prisma.notification.create({
       data: { userId: dev.id, type: "TASK_ASSIGNED", message: "test", taskId: task.id },

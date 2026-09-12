@@ -62,7 +62,7 @@ export function useAuth() {
     try {
       await api.post("/auth/logout");
     } catch (e) {
-      // Ignore logout errors
+      
     } finally {
       disconnectSocket();
       clearAuth();

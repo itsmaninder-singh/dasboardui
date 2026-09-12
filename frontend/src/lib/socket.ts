@@ -32,14 +32,14 @@ export function initSocket(token: string): Socket {
 
   const syncActivities = () => {
     if (!socket) return;
-    // Rule 7: On socket connect / reconnect, always emit "activity:sync" and reconcile with Postgres
+    
     socket.emit(
       "activity:sync",
       {},
       (response: { success: boolean; data?: ActivityLog[] }) => {
         if (response?.success && Array.isArray(response.data)) {
           useSocketStore.getState().setRecentActivities(response.data);
-          // Invalidate activity queries so any page viewing activities reflects fresh DB state
+          
           queryClient.invalidateQueries({ queryKey: ["activity"] });
         }
       }
@@ -61,7 +61,7 @@ export function initSocket(token: string): Socket {
   });
 
   socket.on("activity:new", (payload: ActivityEventPayload) => {
-    // Convert to ActivityLog format for store
+    
     const activityItem: ActivityLog = {
       id: payload.id,
       taskId: payload.taskId,
@@ -84,7 +84,7 @@ export function initSocket(token: string): Socket {
 
     useSocketStore.getState().addActivity(activityItem);
 
-    // Invalidate TanStack Query caches so UI updates without manual patching
+    
     queryClient.invalidateQueries({ queryKey: ["tasks"] });
     queryClient.invalidateQueries({ queryKey: ["projects"] });
     queryClient.invalidateQueries({ queryKey: ["activity"] });
@@ -110,7 +110,7 @@ export function initSocket(token: string): Socket {
     useSocketStore.getState().setOnlineCount(payload.onlineCount);
   });
 
-  // Fallback if server responds via event instead of ack callback
+  
   socket.on("activity:sync-response", (events: ActivityLog[]) => {
     if (Array.isArray(events)) {
       useSocketStore.getState().setRecentActivities(events);

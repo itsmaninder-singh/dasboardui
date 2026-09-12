@@ -2,7 +2,7 @@ import { clientRepository } from "../repositories/client.repository";
 import { ApiError } from "../utils/ApiError";
 
 export const clientService = {
-  // Client management is ADMIN-only (enforced by route middleware).
+  
   async createClient(data: { name: string; email?: string; company?: string }) {
     return clientRepository.create(data);
   },

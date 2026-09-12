@@ -9,8 +9,8 @@ const AppBootstrapper: React.FC<{ children: React.ReactNode }> = ({ children }) 
   const { checkAuthSilent } = useAuth();
 
   useEffect(() => {
-    // Non-negotiable rule: Access token kept only in memory.
-    // On first load/refresh, check HttpOnly cookie via /auth/refresh to restore session silently.
+    
+    
     checkAuthSilent();
   }, []);
 

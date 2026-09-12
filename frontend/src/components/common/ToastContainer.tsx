@@ -64,7 +64,7 @@ const ToastItem: React.FC<{ toast: ToastMessage; onDismiss: (id: string) => void
         </button>
       </div>
 
-      {/* Shrinking progress bar */}
+      {}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-slate-800">
         <motion.div
           initial={{ width: "100%" }}

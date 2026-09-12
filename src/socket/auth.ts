@@ -9,11 +9,6 @@ export interface AuthenticatedSocket extends Socket {
   };
 }
 
-/**
- * Socket.io middleware: authenticates the connection using the same short-lived
- * access token used for REST calls, passed via the `auth` handshake payload
- * (`io(url, { auth: { token } })`). Connections without a valid token are rejected.
- */
 export function socketAuthMiddleware(socket: Socket, next: (err?: Error) => void) {
   try {
     const token =

@@ -27,7 +27,7 @@ export const TaskKanban: React.FC<TaskKanbanProps> = ({ tasks, onStatusChange })
             key={col.id}
             className={`flex flex-col rounded-xl bg-graphite-card/50 border ${col.border} p-3 min-w-[260px] max-h-[calc(100vh-280px)]`}
           >
-            {/* Column Header */}
+            {}
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-graphite-border">
               <div className="flex items-center gap-2">
                 <span className={`w-2 h-2 rounded-full ${col.dot}`} />
@@ -40,7 +40,7 @@ export const TaskKanban: React.FC<TaskKanbanProps> = ({ tasks, onStatusChange })
               </span>
             </div>
 
-            {/* Column Cards (Physical spring animation) */}
+            {}
             <div className="flex-1 overflow-y-auto space-y-3 pr-1">
               <AnimatePresence mode="popLayout">
                 {columnTasks.length === 0 ? (

@@ -3,14 +3,14 @@ import { env } from "../config/env";
 import { Role } from "@prisma/client";
 
 export interface AccessTokenPayload {
-  sub: string; // userId
+  sub: string; 
   role: Role;
   email: string;
 }
 
 export interface RefreshTokenPayload {
-  sub: string; // userId
-  jti: string; // refresh token record id (raw, unhashed identifier)
+  sub: string; 
+  jti: string; 
 }
 
 export function signAccessToken(payload: AccessTokenPayload): string {

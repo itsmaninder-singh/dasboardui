@@ -10,11 +10,6 @@ interface RequestingUser {
   role: Role;
 }
 
-/**
- * Ownership check shared by every project-scoped operation.
- * ADMIN bypasses; PROJECT_MANAGER must be the project's manager; DEVELOPER never
- * gets here directly (developers only reach projects indirectly through their tasks).
- */
 async function assertProjectAccess(projectId: string, requester: RequestingUser) {
   const project = await projectRepository.findById(projectId);
   if (!project) throw ApiError.notFound("Project not found");
@@ -23,7 +18,7 @@ async function assertProjectAccess(projectId: string, requester: RequestingUser)
 
   if (requester.role === "PROJECT_MANAGER") {
     if (project.managerId !== requester.id) {
-      // 404 (not 403) to avoid leaking existence of projects the PM doesn't own.
+      
       throw ApiError.notFound("Project not found");
     }
     return project;
@@ -40,7 +35,7 @@ export const projectService = {
     const client = await clientRepository.findById(input.clientId);
     if (!client) throw ApiError.badRequest("Client does not exist", "CLIENT_NOT_FOUND");
 
-    // ADMIN can assign any PM; a PROJECT_MANAGER can only create projects for themselves.
+    
     let managerId: string;
     if (requester.role === "ADMIN") {
       managerId = input.managerId ?? requester.id;
@@ -90,6 +85,6 @@ export const projectService = {
     return projectRepository.delete(projectId);
   },
 
-  // Exposed for task.service to reuse the exact same ownership rule.
+  
   assertProjectAccess,
 };

@@ -15,12 +15,9 @@ const router = Router();
 
 router.use(authenticate);
 
-// All three roles can list/read tasks — visibility is scoped inside task.service
-// (admin: all, PM: own projects, developer: own assigned tasks).
 router.get("/", validate({ query: taskFilterQuerySchema }), taskController.list);
 router.get("/:id", validate({ params: idParamSchema }), taskController.getById);
 
-// Only ADMIN/PM can create or edit task metadata.
 router.post(
   "/",
   authorize("ADMIN", "PROJECT_MANAGER"),
@@ -40,8 +37,6 @@ router.delete(
   taskController.remove
 );
 
-// Status updates: all roles hit this route, but task.service restricts a DEVELOPER
-// to only their own assigned task.
 router.patch(
   "/:id/status",
   validate({ params: idParamSchema, body: updateTaskStatusSchema }),

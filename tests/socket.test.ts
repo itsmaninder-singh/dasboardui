@@ -37,7 +37,7 @@ describe("Socket.io authorization", () => {
   test("8 & 9. Authorized users receive task activity; unauthorized users do not", async () => {
     const { user: pm, accessToken: pmToken } = await createUser("PROJECT_MANAGER", "pm");
     const { user: dev1, accessToken: dev1Token } = await createUser("DEVELOPER", "dev1");
-    const { accessToken: dev2Token } = await createUser("DEVELOPER", "dev2"); // unrelated developer
+    const { accessToken: dev2Token } = await createUser("DEVELOPER", "dev2"); 
     const client = await createClient();
     const project = await createProject(pm.id, client.id);
     const task = await createTask(project.id, dev1.id);
@@ -46,7 +46,7 @@ describe("Socket.io authorization", () => {
     const dev1Socket = await connectClient(dev1Token);
     const dev2Socket = await connectClient(dev2Token);
 
-    // Give sockets a moment to finish joining their rooms (project room lookup is async).
+    
     await new Promise((r) => setTimeout(r, 300));
 
     const pmReceived = new Promise((resolve) => pmSocket.once("activity:new", resolve));

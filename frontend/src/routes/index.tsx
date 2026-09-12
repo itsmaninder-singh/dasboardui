@@ -17,11 +17,11 @@ import { AppShell } from "../components/layout/AppShell";
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* Public Auth Routes */}
+      {}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      {/* Protected App Shell Routes */}
+      {}
       <Route
         element={
           <ProtectedRoute>
@@ -29,10 +29,10 @@ export const AppRoutes: React.FC = () => {
           </ProtectedRoute>
         }
       >
-        {/* Role-specific Dashboard */}
+        {}
         <Route path="/" element={<DashboardPage />} />
 
-        {/* Projects (Admin & PM) */}
+        {}
         <Route
           path="/projects"
           element={
@@ -50,11 +50,11 @@ export const AppRoutes: React.FC = () => {
           }
         />
 
-        {/* Tasks (All roles - backend scopes visibility) */}
+        {}
         <Route path="/tasks" element={<TasksPage />} />
         <Route path="/tasks/:id" element={<TaskDetailPage />} />
 
-        {/* Clients (Admin manage, PM read-only) */}
+        {}
         <Route
           path="/clients"
           element={
@@ -64,10 +64,10 @@ export const AppRoutes: React.FC = () => {
           }
         />
 
-        {/* Notifications (All authenticated users) */}
+        {}
         <Route path="/notifications" element={<NotificationsPage />} />
 
-        {/* Users (Admin only) */}
+        {}
         <Route
           path="/users"
           element={
@@ -77,7 +77,7 @@ export const AppRoutes: React.FC = () => {
           }
         />
 
-        {/* Fallback 404 inside layout */}
+        {}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

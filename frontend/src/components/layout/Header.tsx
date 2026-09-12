@@ -20,7 +20,7 @@ export const Header: React.FC<{ onNewTaskClick?: () => void }> = ({ onNewTaskCli
 
   return (
     <header className="sticky top-0 z-20 glass-header h-14 px-4 sm:px-6 flex items-center justify-between gap-4">
-      {/* Mobile Menu & Brand */}
+      {}
       <div className="flex items-center gap-3">
         <button
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -37,14 +37,14 @@ export const Header: React.FC<{ onNewTaskClick?: () => void }> = ({ onNewTaskCli
         </Link>
       </div>
 
-      {/* Center / Telemetry: Live Presence */}
+      {}
       <div className="hidden sm:flex items-center gap-3">
         {user?.role === "ADMIN" && (
           <PresenceIndicator />
         )}
       </div>
 
-      {/* Right Controls: Quick Actions + Notifications + Profile */}
+      {}
       <div className="flex items-center gap-2 sm:gap-3">
         {canCreateTask && onNewTaskClick && (
           <Button
@@ -58,7 +58,7 @@ export const Header: React.FC<{ onNewTaskClick?: () => void }> = ({ onNewTaskCli
           </Button>
         )}
 
-        {/* Notifications Icon with Unread Pill */}
+        {}
         <Link
           to="/notifications"
           className="relative p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors border border-transparent hover:border-graphite-border"
@@ -72,7 +72,7 @@ export const Header: React.FC<{ onNewTaskClick?: () => void }> = ({ onNewTaskCli
           )}
         </Link>
 
-        {/* Profile Capsule */}
+        {}
         {user && (
           <div className="flex items-center gap-2 pl-2 border-l border-graphite-border">
             <div className="hidden lg:block text-right">

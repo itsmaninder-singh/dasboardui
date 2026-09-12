@@ -33,7 +33,7 @@ export const TasksPage: React.FC = () => {
 
   const canCreate = user?.role === "ADMIN" || user?.role === "PROJECT_MANAGER";
 
-  // Fetch Tasks with URL query params
+  
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["tasks", filters],
     queryFn: async () => {
@@ -51,7 +51,7 @@ export const TasksPage: React.FC = () => {
     },
   });
 
-  // Fast status update mutation
+  
   const updateStatusMutation = useMutation({
     mutationFn: async ({ taskId, status }: { taskId: string; status: TaskStatus }) => {
       const res = await api.patch<ApiResponse<Task>>(`/tasks/${taskId}/status`, { status });
@@ -80,7 +80,7 @@ export const TasksPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Header */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -95,7 +95,7 @@ export const TasksPage: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* View Mode Toggle */}
+          {}
           <div className="flex items-center bg-graphite-card border border-graphite-border p-1 rounded-lg">
             <button
               onClick={() => setViewMode("kanban")}
@@ -133,10 +133,10 @@ export const TasksPage: React.FC = () => {
         </div>
       </div>
 
-      {/* URL-bound Parametric Filter Toolbar */}
+      {}
       <TaskFiltersBar />
 
-      {/* Main Viewport */}
+      {}
       {isLoading ? (
         <div className="h-96 rounded-xl bg-graphite-card border border-graphite-border skeleton-shimmer" />
       ) : isError ? (
@@ -161,7 +161,7 @@ export const TasksPage: React.FC = () => {
         <div className="space-y-4">
           <TaskTable tasks={tasks} />
 
-          {/* Pagination bar for table view */}
+          {}
           {meta && meta.totalPages > 1 && (
             <div className="flex items-center justify-between p-3 rounded-lg bg-graphite-card border border-graphite-border text-xs font-mono">
               <span className="text-slate-400">
@@ -193,7 +193,7 @@ export const TasksPage: React.FC = () => {
         </div>
       )}
 
-      {/* Creation Modal */}
+      {}
       {isNewTaskModalOpen && (
         <TaskModal
           isOpen={isNewTaskModalOpen}

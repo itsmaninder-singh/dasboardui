@@ -37,9 +37,9 @@ export const authService = {
       throw ApiError.conflict("An account with this email already exists", "EMAIL_TAKEN");
     }
 
-    // SECURITY: self-registration is always forced to DEVELOPER, regardless of what
-    // the client sends. ADMIN/PROJECT_MANAGER accounts must be created by an existing
-    // ADMIN via POST /api/users — never through open self-registration.
+    
+    
+    
     const passwordHash = await hashPassword(input.password);
     const user = await userRepository.create({
       name: input.name,
@@ -83,7 +83,7 @@ export const authService = {
     const stored = await refreshTokenRepository.findByHash(tokenHash);
 
     if (!stored || stored.revoked || stored.expiresAt < new Date() || stored.userId !== payload.sub) {
-      // Reuse of a revoked/rotated token is a strong signal of theft — revoke everything.
+      
       if (stored && stored.revoked) {
         await refreshTokenRepository.revokeAllForUser(stored.userId);
       }
@@ -95,7 +95,7 @@ export const authService = {
       throw ApiError.unauthorized("Account no longer active", "INACTIVE_ACCOUNT");
     }
 
-    // Rotation: issue a brand new pair, revoke the old one, link them for audit/theft-detection.
+    
     const tokens = await issueTokenPair(user);
     await refreshTokenRepository.revoke(stored.id, sha256Hex(tokens.refreshToken));
 

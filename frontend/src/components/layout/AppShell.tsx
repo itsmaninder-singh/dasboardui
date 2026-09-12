@@ -21,7 +21,7 @@ import {
 import { TaskModal } from "../tasks/TaskModal";
 
 export const AppShell: React.FC = () => {
-  // Activate Socket.io lifecycle listener
+  
   useSocketSetup();
 
   const location = useLocation();
@@ -43,13 +43,13 @@ export const AppShell: React.FC = () => {
 
   return (
     <div className="relative min-h-screen flex bg-obsidian-950 text-slate-100 overflow-x-hidden">
-      {/* 1. SOFT PINK AMBIENT BACKGROUND LAYER */}
+      {}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Subtle dot matrix grid */}
+        {}
         <div className="absolute inset-0 bg-ambient-grid opacity-35" />
         <div className="absolute inset-0 bg-noise opacity-30" />
 
-        {/* Floating pink orb (moves slowly) */}
+        {}
         <motion.div
           animate={{
             x: [0, 30, -20, 0],
@@ -66,7 +66,7 @@ export const AppShell: React.FC = () => {
           }`}
         />
 
-        {/* Floating pink orb for depth */}
+        {}
         <motion.div
           animate={{
             x: [0, -35, 25, 0],
@@ -81,10 +81,10 @@ export const AppShell: React.FC = () => {
         />
       </div>
 
-      {/* 2. DESKTOP COMMAND RAIL */}
+      {}
       <CommandRail />
 
-      {/* 3. MOBILE SLIDE-OVER NAVIGATION */}
+      {}
       <AnimatePresence>
         {mobileNavOpen && (
           <div className="fixed inset-0 z-50 md:hidden flex">
@@ -135,7 +135,7 @@ export const AppShell: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* 4. MAIN CONTENT VIEWPORT */}
+      {}
       <div className="flex-1 flex flex-col min-w-0 z-10">
         <Header onNewTaskClick={() => setIsTaskModalOpen(true)} />
         <LiveActivityTicker />
@@ -155,10 +155,10 @@ export const AppShell: React.FC = () => {
         </main>
       </div>
 
-      {/* 5. PHYSICAL TOAST NOTIFICATIONS */}
+      {}
       <ToastContainer />
 
-      {/* Global Task Creation Modal */}
+      {}
       {isTaskModalOpen && (
         <TaskModal isOpen={isTaskModalOpen} onClose={() => setIsTaskModalOpen(false)} />
       )}

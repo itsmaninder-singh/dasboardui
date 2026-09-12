@@ -20,7 +20,7 @@ import { EmptyState } from "../common/EmptyState";
 import { StatCardSkeleton } from "../common/Skeleton";
 
 export const PmDashboard: React.FC = () => {
-  // Fetch PM's own projects
+  
   const { data: projectsData, isLoading: isProjectsLoading } = useQuery({
     queryKey: ["projects", "pm-dashboard"],
     queryFn: async () => {
@@ -29,7 +29,7 @@ export const PmDashboard: React.FC = () => {
     },
   });
 
-  // Fetch PM's tasks
+  
   const { data: tasksData, isLoading: isTasksLoading } = useQuery({
     queryKey: ["tasks", "pm-dashboard"],
     queryFn: async () => {
@@ -41,7 +41,7 @@ export const PmDashboard: React.FC = () => {
   const projects = projectsData?.data || [];
   const tasks = tasksData?.data || [];
 
-  // Priority summary calculation across PM's tasks
+  
   const priorityCounts: Record<TaskPriority, number> = {
     LOW: 0,
     MEDIUM: 0,
@@ -55,7 +55,7 @@ export const PmDashboard: React.FC = () => {
     }
   });
 
-  // Upcoming deadlines (tasks with dueDate sorted soonest first, excluding DONE)
+  
   const upcomingDeadlines = [...tasks]
     .filter((t) => t.dueDate && t.status !== "DONE")
     .sort((a, b) => new Date(a.dueDate!).getTime() - new Date(b.dueDate!).getTime())
@@ -63,7 +63,7 @@ export const PmDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Banner */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -86,7 +86,7 @@ export const PmDashboard: React.FC = () => {
         </Link>
       </div>
 
-      {/* Priority Summary Lane */}
+      {}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {(["CRITICAL", "HIGH", "MEDIUM", "LOW"] as TaskPriority[]).map((prio, idx) => {
           const count = priorityCounts[prio];
@@ -125,11 +125,11 @@ export const PmDashboard: React.FC = () => {
         })}
       </div>
 
-      {/* 2-Column Section: Upcoming Deadlines + Managed Projects */}
+      {}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column: Deadlines & Projects */}
+        {}
         <div className="lg:col-span-1 space-y-6">
-          {/* Upcoming Deadlines Queue */}
+          {}
           <div className="bg-graphite-card border border-graphite-border rounded-xl p-5 shadow-lg">
             <div className="flex items-center justify-between pb-3 border-b border-graphite-border">
               <div className="flex items-center gap-2">
@@ -183,7 +183,7 @@ export const PmDashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Managed Projects List */}
+          {}
           <div className="bg-graphite-card border border-graphite-border rounded-xl p-5 shadow-lg">
             <div className="flex items-center justify-between pb-3 border-b border-graphite-border">
               <div className="flex items-center gap-2">
@@ -234,7 +234,7 @@ export const PmDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Project-Scoped Activity Feed */}
+        {}
         <div className="lg:col-span-2">
           <ActivityFeedCard limit={14} />
         </div>

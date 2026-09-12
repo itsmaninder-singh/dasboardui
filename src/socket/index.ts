@@ -25,7 +25,7 @@ export function initSocket(httpServer: HttpServer): Server {
 
     presence.addSocket(userId, s.id);
 
-    // Every user has a personal room for direct notifications / their own task events.
+    
     await s.join(rooms.user(userId));
 
     if (role === "ADMIN") {
@@ -40,9 +40,9 @@ export function initSocket(httpServer: HttpServer): Server {
       await Promise.all(managedProjects.map((p) => s.join(rooms.project(p.id))));
     }
 
-    // Developers intentionally do NOT join project rooms — they only receive
-    // events addressed directly to their personal room (rooms.user), which
-    // keeps them from seeing other developers' task activity in the same project.
+    
+    
+    
 
     broadcastPresence();
 
@@ -67,11 +67,6 @@ function broadcastPresence() {
   });
 }
 
-/**
- * Called after a Project Manager creates a new project, so their already-open
- * sockets immediately start receiving that project's room events without
- * needing to reconnect.
- */
 export async function joinManagerToProjectRoom(managerId: string, projectId: string) {
   if (!io) return;
   const sockets = await io.fetchSockets();

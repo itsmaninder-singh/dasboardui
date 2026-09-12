@@ -16,7 +16,7 @@ interface ActivityFeedCardProps {
 }
 
 export const ActivityFeedCard: React.FC<ActivityFeedCardProps> = ({ projectId, limit = 15 }) => {
-  // Query role-scoped activity from backend
+  
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["activity", { projectId, limit }],
     queryFn: async () => {
@@ -44,7 +44,7 @@ export const ActivityFeedCard: React.FC<ActivityFeedCardProps> = ({ projectId, l
 
   return (
     <div className="bg-graphite-card border border-graphite-border rounded-xl p-5 shadow-lg flex flex-col h-full">
-      {/* Header */}
+      {}
       <div className="flex items-center justify-between pb-4 border-b border-graphite-border">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
@@ -65,7 +65,7 @@ export const ActivityFeedCard: React.FC<ActivityFeedCardProps> = ({ projectId, l
         </span>
       </div>
 
-      {/* Feed list */}
+      {}
       <div className="flex-1 overflow-y-auto mt-4 pr-1 space-y-3 max-h-[480px]">
         {isLoading ? (
           <div className="space-y-3">
@@ -127,7 +127,7 @@ export const ActivityFeedCard: React.FC<ActivityFeedCardProps> = ({ projectId, l
                     )}
                   </div>
 
-                  {/* Status transition chips */}
+                  {}
                   <div className="flex items-center gap-2 mt-2 pt-2 border-t border-graphite-border/50">
                     {item.previousStatus && (
                       <>

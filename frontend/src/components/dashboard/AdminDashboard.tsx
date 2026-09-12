@@ -22,7 +22,7 @@ import { StatCardSkeleton } from "../common/Skeleton";
 export const AdminDashboard: React.FC = () => {
   const onlineCount = useSocketStore((s) => s.onlineCount);
 
-  // Fetch projects summary
+  
   const { data: projectsData, isLoading: isProjectsLoading } = useQuery({
     queryKey: ["projects", "summary"],
     queryFn: async () => {
@@ -31,7 +31,7 @@ export const AdminDashboard: React.FC = () => {
     },
   });
 
-  // Fetch tasks summary
+  
   const { data: tasksData, isLoading: isTasksLoading } = useQuery({
     queryKey: ["tasks", "summary"],
     queryFn: async () => {
@@ -44,7 +44,7 @@ export const AdminDashboard: React.FC = () => {
   const tasks = tasksData?.data || [];
   const totalTasks = tasksData?.meta?.total ?? tasks.length;
 
-  // Status breakdown calculations
+  
   const statusCounts: Record<TaskStatus, number> = {
     TODO: 0,
     IN_PROGRESS: 0,
@@ -63,7 +63,7 @@ export const AdminDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Header Banner */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -85,9 +85,9 @@ export const AdminDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Asymmetric Metrics Lane */}
+      {}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* OVERDUE TASK CARD - URGENT STYLING */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -125,7 +125,7 @@ export const AdminDashboard: React.FC = () => {
           </Link>
         </motion.div>
 
-        {/* LIVE ONLINE PRESENCE CARD */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -159,7 +159,7 @@ export const AdminDashboard: React.FC = () => {
           </Link>
         </motion.div>
 
-        {/* TOTAL PROJECTS CARD */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -191,7 +191,7 @@ export const AdminDashboard: React.FC = () => {
           </Link>
         </motion.div>
 
-        {/* TOTAL TASKS CARD */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -224,9 +224,9 @@ export const AdminDashboard: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Main Grid: Status Breakdown + Global Activity Feed */}
+      {}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Status Breakdown Lane */}
+        {}
         <div className="lg:col-span-1 bg-graphite-card border border-graphite-border rounded-xl p-5 shadow-lg space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-graphite-border">
             <div className="flex items-center gap-2">
@@ -276,7 +276,7 @@ export const AdminDashboard: React.FC = () => {
             })}
           </div>
 
-          {/* Quick Filter Shortcut */}
+          {}
           <div className="pt-3 border-t border-graphite-border text-center">
             <Link
               to="/tasks"
@@ -287,7 +287,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Global Activity Feed */}
+        {}
         <div className="lg:col-span-2">
           <ActivityFeedCard limit={12} />
         </div>

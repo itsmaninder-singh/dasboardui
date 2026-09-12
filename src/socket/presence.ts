@@ -1,9 +1,3 @@
-/**
- * In-memory presence tracking. This is NOT a source of truth for any persisted
- * data (activity/notifications always come from Postgres) — it only tracks
- * which users currently have live sockets open, correctly handling multiple
- * tabs/devices per user (a user is "online" while at least one socket is open).
- */
 const userSockets = new Map<string, Set<string>>();
 
 export const presence = {

@@ -39,7 +39,7 @@ export const taskRepository = {
       prisma.task.count({ where }),
     ]);
   },
-  // Used by the overdue cron job. Only picks tasks not already terminal/overdue.
+  
   findOverdueCandidates() {
     return prisma.task.findMany({
       where: {

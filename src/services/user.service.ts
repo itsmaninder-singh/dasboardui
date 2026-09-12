@@ -9,7 +9,7 @@ function sanitizeUser(user: User) {
 }
 
 export const userService = {
-  // ADMIN only (enforced at route level) — creates users with any role.
+  
   async createUser(input: { name: string; email: string; password: string; role: Role }) {
     const existing = await userRepository.findByEmail(input.email);
     if (existing) throw ApiError.conflict("An account with this email already exists", "EMAIL_TAKEN");

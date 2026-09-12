@@ -43,7 +43,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
   const addToast = useUiStore((s) => s.addToast);
   const user = useAuthStore((s) => s.user);
 
-  // Fetch Projects for dropdown
+  
   const { data: projectsData } = useQuery({
     queryKey: ["projects", "selector"],
     queryFn: async () => {
@@ -53,7 +53,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
     enabled: isOpen,
   });
 
-  // If Admin, fetch developers
+  
   const { data: usersData } = useQuery({
     queryKey: ["users", "devs-selector"],
     queryFn: async () => {

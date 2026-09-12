@@ -37,7 +37,7 @@ export const ProjectsPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header bar */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -62,7 +62,7 @@ export const ProjectsPage: React.FC = () => {
         )}
       </div>
 
-      {/* Search and stats bar */}
+      {}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
@@ -83,7 +83,7 @@ export const ProjectsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid */}
+      {}
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -115,7 +115,7 @@ export const ProjectsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Creation Modal */}
+      {}
       {isCreateModalOpen && (
         <ProjectModal
           isOpen={isCreateModalOpen}

@@ -62,7 +62,7 @@ export const UserModal: React.FC<UserModalProps> = ({
       reset({
         name: userToEdit.name,
         email: userToEdit.email,
-        password: "dummyPassword123!", // not edited
+        password: "dummyPassword123!", 
         role: userToEdit.role,
       });
     } else {

@@ -26,7 +26,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onStatusChange, isStat
       }`}
     >
       <div>
-        {/* Top bar: Priority + Project */}
+        {}
         <div className="flex items-center justify-between gap-2 mb-2">
           <PriorityBadge priority={task.priority} size="sm" />
 
@@ -37,7 +37,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onStatusChange, isStat
           )}
         </div>
 
-        {/* Task Title */}
+        {}
         <Link to={`/tasks/${task.id}`} className="block">
           <h4 className="font-heading font-semibold text-sm text-slate-100 group-hover:text-amber-300 transition-colors line-clamp-2 leading-snug">
             {task.title}
@@ -51,9 +51,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onStatusChange, isStat
         )}
       </div>
 
-      {/* Footer Details */}
+      {}
       <div className="pt-3 mt-3 border-t border-graphite-border/60 flex items-center justify-between gap-2 text-xs">
-        {/* Assignee */}
+        {}
         <div className="flex items-center gap-1.5 min-w-0">
           <div className="w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-mono text-[9px] text-slate-300 shrink-0">
             {task.assignedDeveloper?.name ? task.assignedDeveloper.name.charAt(0).toUpperCase() : "?"}
@@ -63,7 +63,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onStatusChange, isStat
           </span>
         </div>
 
-        {/* Due date or Status */}
+        {}
         <div className="flex items-center gap-2">
           {task.dueDate && (
             <div

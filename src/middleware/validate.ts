@@ -8,10 +8,6 @@ interface ValidateSchemas {
   query?: AnyZodObject;
 }
 
-/**
- * Validates body/params/query with Zod. On success, replaces req.<part> with the
- * parsed (and coerced/defaulted) value so downstream code gets typed, clean data.
- */
 export function validate(schemas: ValidateSchemas) {
   return (req: Request, _res: Response, next: NextFunction) => {
     try {

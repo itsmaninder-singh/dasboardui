@@ -9,18 +9,18 @@ export const LiveActivityTicker: React.FC = () => {
   const recentActivities = useSocketStore((s) => s.recentActivities);
   const isConnected = useSocketStore((s) => s.isConnected);
 
-  // Take the most recent 6 items for the ticker
+  
   const displayItems = recentActivities.slice(0, 6);
 
   return (
     <div className="hidden lg:flex items-center h-9 px-3 bg-obsidian-900/90 border-y border-graphite-border text-xs overflow-hidden select-none">
-      {/* Real-time Indicator Pill */}
+      {}
       <div className="flex items-center gap-1.5 pr-3 border-r border-graphite-border/80 shrink-0 text-slate-400 font-mono text-[11px]">
         <Radio className={`w-3.5 h-3.5 ${isConnected ? "text-amber-400" : "text-slate-600"}`} />
         <span className="font-semibold tracking-wider text-slate-300 uppercase">LIVE STREAM</span>
       </div>
 
-      {/* Ticker Items */}
+      {}
       <div className="flex-1 overflow-x-auto no-scrollbar flex items-center gap-4 pl-3 py-1">
         <AnimatePresence initial={false}>
           {displayItems.length === 0 ? (

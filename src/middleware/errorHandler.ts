@@ -3,7 +3,6 @@ import { ApiError } from "../utils/ApiError";
 import { env } from "../config/env";
 import { logger } from "../utils/logger";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function errorHandler(err: unknown, req: Request, res: Response, _next: NextFunction) {
   if (err instanceof ApiError) {
     return res.status(err.statusCode).json({

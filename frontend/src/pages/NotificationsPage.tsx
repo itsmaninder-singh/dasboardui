@@ -16,7 +16,7 @@ export const NotificationsPage: React.FC = () => {
   const addToast = useUiStore((s) => s.addToast);
   const setUnreadCount = useSocketStore((s) => s.setUnreadCount);
 
-  // Fetch Notifications
+  
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["notifications", "inbox"],
     queryFn: async () => {
@@ -25,21 +25,21 @@ export const NotificationsPage: React.FC = () => {
     },
   });
 
-  // Mark single as read
+  
   const markReadMutation = useMutation({
     mutationFn: async (id: string) => {
       await api.patch(`/notifications/${id}/read`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notifications"] });
-      // Refresh unread count
+      
       api.get<ApiResponse<{ unreadCount: number }>>("/notifications/unread-count").then((res) => {
         setUnreadCount(res.data.data.unreadCount);
       });
     },
   });
 
-  // Mark all as read
+  
   const markAllReadMutation = useMutation({
     mutationFn: async () => {
       await api.patch("/notifications/read-all");
@@ -60,7 +60,7 @@ export const NotificationsPage: React.FC = () => {
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
-      {/* Header */}
+      {}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-graphite-border">
         <div>
           <div className="flex items-center gap-2">
@@ -87,7 +87,7 @@ export const NotificationsPage: React.FC = () => {
         )}
       </div>
 
-      {/* List */}
+      {}
       {isLoading ? (
         <div className="space-y-3">
           {[1, 2, 3, 4].map((i) => (

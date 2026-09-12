@@ -3,12 +3,6 @@ import { AuthenticatedSocket } from "./auth";
 import { activityService } from "../services/activity.service";
 import { logger } from "../utils/logger";
 
-/**
- * Handles the "missed events on reconnect" requirement.
- * The client emits `activity:sync` right after connecting (e.g. after a dropped
- * connection); the server responds with the latest 20 events the user is
- * authorized to see, read fresh from PostgreSQL — never from any in-memory cache.
- */
 export function registerReconnectHandler(io: Server) {
   io.on("connection", (socket: Socket) => {
     const s = socket as AuthenticatedSocket;
